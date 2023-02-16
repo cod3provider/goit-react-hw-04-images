@@ -19,7 +19,6 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [largeImageURL, setLargeImageURL] = useState("");
   const [tags, setTags] = useState("");
-  // const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const App = () => {
         setIsLoading(true);
         const { hits, totalHits } = await getImages(search, page);
         const newPictures = pictureValues(hits);
-        console.log(newPictures);
         if (newPictures.length === 0) {
           toast.warn("We can't find any images");
         }

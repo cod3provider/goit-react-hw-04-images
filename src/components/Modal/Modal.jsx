@@ -15,12 +15,6 @@ const Modal = ({largeImage, alt, closeModal}) => {
     }
   }, [closeModal]);
 
-  // const closeModal = e => {
-  //   if (e.target === e.currentTarget || e.code === 'Escape') {
-  //     onModalClick();
-  //   }
-  // }
-
   return (
     createPortal (
       <div className={s.Overlay} onClick={closeModal}>
