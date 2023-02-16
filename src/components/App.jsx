@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 import Container from './Container/Container';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -73,11 +72,11 @@ const App = () => {
     setShowModal(!showModal);
   }
 
-  // const closeModal = e => {
-  //   if (e.target === e.currentTarget || e.code === 'Escape') {
-  //     toggleModal();
-  //   }
-  // }
+  const closeModal = e => {
+    if (e.target === e.currentTarget || e.code === 'Escape') {
+      toggleModal();
+    }
+  }
 
   const canLoadMore = images.length !== 0 && !isLoading && page !== totalPages;
 
@@ -103,7 +102,7 @@ const App = () => {
         <Modal
           largeImage={largeImageURL}
           alt={tags}
-          onModalClick={toggleModal}
+          closeModal={closeModal}
         />
       )}
     </Container>
