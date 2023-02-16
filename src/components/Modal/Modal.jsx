@@ -6,20 +6,26 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({largeImage, alt, closeModal}) => {
+const Modal = ({largeImage, alt, onModalClick}) => {
   useEffect(() => {
-    document.addEventListener('keydown', closeModal);
+    const onKeyDown = e => {
+      if (e.code === 'Escape') {
+        onModalClick();
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
 
     return () => {
-      document.removeEventListener('keydown', closeModal);
+      document.removeEventListener('keydown', onKeyDown);
     }
-  }, [closeModal]);
+  }, [onModalClick]);
 
-  // const closeModal = e => {
-  //   if (e.target === e.currentTarget || e.code === 'Escape') {
-  //     onModalClick();
-  //   }
-  // }
+  const closeModal = e => {
+    if (e.target === e.currentTarget || e.code === 'Escape') {
+      onModalClick();
+    }
+  }
 
   return (
     createPortal (
